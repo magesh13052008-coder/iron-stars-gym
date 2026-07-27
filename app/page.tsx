@@ -45,6 +45,16 @@ function Mark() {
   return <span className="is-mark" aria-hidden="true">★</span>;
 }
 
+function BrandLogo({ compact = false }: { compact?: boolean }) {
+  return (
+    <img
+      className={compact ? "brand-logo compact" : "brand-logo"}
+      src="/assets/iron-stars-gym-logo.png"
+      alt="Iron Stars Gym"
+    />
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeReview, setActiveReview] = useState(0);
@@ -92,7 +102,7 @@ export default function Home() {
   return (
     <main className="gym-site">
       <nav className="gym-nav" aria-label="Main navigation">
-        <a className="gym-brand" href="#home"><Mark /><span>IRON <b>STARS</b></span></a>
+        <a className="gym-brand" href="#home" aria-label="Iron Stars Gym home"><BrandLogo /></a>
         <button className="gym-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu"><i /><i /></button>
         <div className={`gym-links ${menuOpen ? "open" : ""}`}>
           <a href="#experience">Experience</a>
@@ -235,7 +245,7 @@ export default function Home() {
 
         <div className="admin-shell" data-rise>
           <aside className="admin-side">
-            <div className="admin-logo"><Mark /><span>IRON STARS<small>ADMIN</small></span></div>
+            <div className="admin-logo"><BrandLogo compact /><span><small>ADMIN CONTROL</small></span></div>
             <nav aria-label="Admin dashboard">
               <button className={adminView === "attendance" ? "active" : ""} onClick={() => setAdminView("attendance")}><span>◷</span> Today&apos;s attendance <b>4</b></button>
               <button className={adminView === "members" ? "active" : ""} onClick={() => setAdminView("members")}><span>◎</span> Member profiles <b>4</b></button>
@@ -463,7 +473,7 @@ export default function Home() {
       </section>
 
       <footer className="gym-footer">
-        <a className="gym-brand" href="#home"><Mark /><span>IRON <b>STARS</b></span></a>
+        <a className="gym-brand" href="#home" aria-label="Iron Stars Gym home"><BrandLogo /></a>
         <p>Kodambakkam, Chennai · +91 91769 61222</p>
         <div><a href="https://www.instagram.com/ironstars_gym/" target="_blank" rel="noreferrer">Instagram</a><a href="#home">Back to top ↑</a></div>
       </footer>
